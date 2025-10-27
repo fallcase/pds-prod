@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pods</title>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const { WebApp } = window.Telegram;
+
+        const { isVersionAtLeast, BackButton, ready } = WebApp;
+
+        ready();
+
+        if (isVersionAtLeast("7.7")) WebApp.disableVerticalSwipes();
+        if (isVersionAtLeast("8.0")) WebApp.lockOrientation();
+
+        if (isVersionAtLeast("6.1")) {
+          BackButton.hide();
+
+          WebApp.setHeaderColor("#101010");
+          WebApp.setBackgroundColor("#101010");
+        }
+
+        if (isVersionAtLeast("7.10")) WebApp.setBottomBarColor("#101010");
+
+        if (
+          isVersionAtLeast("8.0") &&
+          !WebApp.isFullscreen &&
+          /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          )
+        ) {
+          WebApp.requestFullscreen();
+        }
+      });
+    </script>
+    <script type="module" crossorigin src="/assets/index-BhLc0Nnr.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CJtZUG0A.css">
+  </head>
+  <body>
+    <div
+      id="preloader"
+      style="
+        position: fixed;
+        inset: 0;
+        background: #101010;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        padding-bottom: 3.5vh;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          inset: 0;
+          background: url('/layouts/grid.svg') center/cover no-repeat;
+          opacity: 0.5;
+          pointer-events: none;
+        "
+      ></div>
+
+      <img src="logo.svg" alt="" style="width: 8.5rem; padding-bottom: 2.5vh" />
+
+      <div
+        style="
+          width: 8.5rem;
+          height: 10px;
+          background: #202020;
+          border-radius: 8px;
+          overflow: hidden;
+        "
+      >
+        <div
+          id="preloader-progress-bar"
+          style="
+            height: 100%;
+            width: 10%;
+            background: white;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+          "
+        ></div>
+      </div>
+    </div>
+
+    <div id="root"></div>
+
+  </body>
+</html>
